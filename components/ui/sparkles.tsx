@@ -6,6 +6,8 @@ import { loadSlim } from "@tsparticles/slim";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useId, useState } from "react";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 type ParticlesProps = {
   id?: string;
   className?: string;

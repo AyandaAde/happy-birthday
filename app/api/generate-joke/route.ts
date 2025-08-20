@@ -6,6 +6,7 @@ const client = new OpenAI({
     apiKey: env.OPENAI_API_KEY, // make sure this is set in your .env
 });
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export async function GET() {
 
