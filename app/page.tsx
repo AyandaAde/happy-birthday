@@ -54,9 +54,8 @@ export default function HomePage() {
       <div className="relative z-50 min-h-screen flex flex-col items-center justify-center w-screen h-screen overflow-hidden">
 
         {/* Title */}
-        <div className="relative w-full h-full flex flex-col items-center justify-center z-50">
           <motion.h1
-            className="text-5xl md:text-7xl font-bold text-red-500 mb-12 drop-shadow-[0_0_18px_rgba(255,50,50,0.85)]"
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-red-500 mb-12 drop-shadow-[0_0_18px_rgba(255,50,50,0.85)] mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}
@@ -114,7 +113,6 @@ export default function HomePage() {
               particleColor="#FFFFFF"
             />
           </div>
-        </div>
       </div>
     </BackgroundBeamsWithCollision>
   );
