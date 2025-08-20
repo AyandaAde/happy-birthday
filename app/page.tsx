@@ -51,7 +51,7 @@ export default function HomePage() {
 
   return (
     <BackgroundBeamsWithCollision>
-      <div className="relative z-50 min-h-screen flex flex-col items-center justify-center w-screen h-screen overflow-y-scroll overflow-x-hidden">
+      <div className="relative z-50 min-h-screen flex flex-col items-center justify-center w-screen h-screen overflow-hidden">
 
         {/* Title */}
         <div className="relative w-full h-full flex flex-col items-center justify-center z-50">
