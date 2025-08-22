@@ -1,37 +1,27 @@
 "use client"
 
-import { useState } from "react"
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-import { useMutation } from "@tanstack/react-query"
-import axios from "axios";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision"
 import { LoaderOne } from "@/components/ui/loader"
-import { motion } from "motion/react";
+import { Separator } from "@/components/ui/separator"
 import { SparklesCore } from "@/components/ui/sparkles"
+import { useQuery } from "@tanstack/react-query"
+import axios from "axios"
+import { motion } from "motion/react"
+import { useState } from "react"
 
 export default function HomePage() {
   const [joke, setJoke] = useState("");
 
-  const getJokeMt = useMutation({
-    mutationFn: async () => {
+  const getJoke = useQuery({
+    queryKey: ["get-joke"],
+    queryFn: async () => {
       const { data } = await axios.get("/api/generate-joke");
-
+      setJoke(data.joke);
       return data;
     }
   });
-
-  const getJoke = async () => {
-    getJokeMt.mutate(undefined, {
-      onSuccess: (data) => {
-        setJoke(data.joke);
-      },
-      onError: (data) => {
-        console.error("Error generating joke", data);
-      }
-    });
-  };
 
   return (
     <BackgroundBeamsWithCollision>
@@ -77,10 +67,10 @@ export default function HomePage() {
               >
                 <Button
                   variant={"default"}
-                  onClick={getJoke}
+                  onClick={() => getJoke.refetch()}
                   className="w-64 h-14 text-xl text-zinc-950 hover:text-zinc-100 rounded-4xl bg-white/50 hover:bg-blue-900/80">
                   {
-                    getJokeMt.isPending ? (
+                    getJoke.isFetching ? (
                       <div className="mb-3">
                         <LoaderOne />
                       </div>
@@ -105,6 +95,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </BackgroundBeamsWithCollision>
+    </BackgroundBeamsWithCollision >
   )
 }
