@@ -46,42 +46,49 @@ export default function HomePage() {
             </motion.h1>
           </div>
 
-          <Card className="shadow-xl border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-gray-800 dark:text-gray-200">Joke</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/20 rounded-lg p-6 border border-blue-200/50 dark:border-blue-700/50">
-                <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed text-center font-medium">
-                  {joke}
-                </p>
-              </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+            className="mx-auto"
+          >
+            <Card className="shadow-xl border-0 bg-white/80 backdrop-blur-sm">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl text-gray-800">Joke</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/20 rounded-lg p-6 border border-blue-200/50 dark:border-blue-700/50">
+                  <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed text-center font-medium">
+                    {joke}
+                  </p>
+                </div>
 
-              <Separator className="my-4" />
+                <Separator className="my-4" />
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 2 }}
-                className="w-fit mx-auto"
-              >
-                <Button
-                  variant={"default"}
-                  onClick={() => getJoke.refetch()}
-                  className="w-64 h-14 text-xl text-zinc-950 hover:text-zinc-100 rounded-4xl bg-white/50 hover:bg-blue-900/80">
-                  {
-                    getJoke.isFetching ? (
-                      <div className="mb-3">
-                        <LoaderOne />
-                      </div>
-                    ) : (
-                      "Press when you feel sad"
-                    )
-                  }
-                </Button>
-              </motion.div>
-            </CardContent>
-          </Card>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 2 }}
+                  className="w-fit mx-auto"
+                >
+                  <Button
+                    variant={"default"}
+                    onClick={() => getJoke.refetch()}
+                    className="w-64 h-14 text-xl text-zinc-950 hover:text-zinc-100 rounded-4xl bg-white/50 hover:bg-blue-900/80">
+                    {
+                      getJoke.isFetching ? (
+                        <div className="mb-3">
+                          <LoaderOne />
+                        </div>
+                      ) : (
+                        "Press when you feel sad"
+                      )
+                    }
+                  </Button>
+                </motion.div>
+              </CardContent>
+            </Card>
+          </motion.div>
           <div className="w-full absolute inset-0 h-screen -z-10">
             <SparklesCore
               id="tsparticlesfullpage"
